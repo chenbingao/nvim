@@ -42,7 +42,7 @@ end
 local tui_color = function(themer)
   if themer then
     themer.setup {
-      colorscheme = "everforest",
+      colorscheme = "everforest_light",
       -- transparent = true,
       styles = {
         keyword = { style = "italic" },
