@@ -80,6 +80,13 @@ require("packer").startup {
     use "b0o/SchemaStore.nvim"
     use "lewis6991/impatient.nvim"
     use "ThemerCorp/themer.lua"
+
+    -- tools
+    use "vim-test/vim-test"
+    use {
+      "rcarriga/vim-ultest",
+      run = ":UpdateRemotePlugins"
+    }
   end,
   config = {
     display = {
