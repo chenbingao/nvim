@@ -82,10 +82,13 @@ require("packer").startup {
     use "ThemerCorp/themer.lua"
 
     -- tools
-    use "vim-test/vim-test"
     use {
-      "rcarriga/vim-ultest",
-      run = ":UpdateRemotePlugins"
+      "nvim-neotest/neotest",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "antoinemadec/FixCursorHold.nvim"
+      }
     }
   end,
   config = {
