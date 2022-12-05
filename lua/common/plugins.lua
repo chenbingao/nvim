@@ -34,6 +34,11 @@ require("packer").startup {
     use "hrsh7th/cmp-path"
     use "hrsh7th/cmp-cmdline"
     use "hrsh7th/nvim-cmp"
+    use {
+      "tzachar/cmp-tabnine",
+      run = "./install.sh",
+      requires = "hrsh7th/nvim-cmp",
+    }
     use "hrsh7th/cmp-vsnip"
     use "hrsh7th/vim-vsnip"
     use "rafamadriz/friendly-snippets"
@@ -55,8 +60,7 @@ require("packer").startup {
     use "norcalli/nvim-colorizer.lua"
     use "arkav/lualine-lsp-progress"
     -- use 'mhartington/formatter.nvim'
-    use 'rescript-lang/vim-rescript'
-    use 'nkrkv/nvim-treesitter-rescript'
+    use "nkrkv/nvim-treesitter-rescript"
 
     use "matze/vim-move"
     use {
@@ -68,7 +72,10 @@ require("packer").startup {
     }
     use "ahmedkhalf/project.nvim"
     use "folke/neodev.nvim"
-    use "glepnir/lspsaga.nvim"
+    use {
+      "glepnir/lspsaga.nvim",
+      branch = "version_2.3",
+    }
 
     use "jose-elias-alvarez/null-ls.nvim"
 
@@ -80,7 +87,6 @@ require("packer").startup {
     use "b0o/SchemaStore.nvim"
     use "lewis6991/impatient.nvim"
     use "ThemerCorp/themer.lua"
-
     -- tools
     use {
       "nvim-neotest/neotest",
@@ -90,6 +96,7 @@ require("packer").startup {
         "antoinemadec/FixCursorHold.nvim"
       }
     }
+
   end,
   config = {
     display = {
