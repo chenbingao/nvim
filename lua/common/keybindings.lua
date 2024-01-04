@@ -102,6 +102,24 @@ M.cmp = function(c)
   }
 end
 
+M.epo = function()
+  vim.keymap.set("i", "<TAB>", function()
+    if vim.fn.pumvisible() == 1 then
+      return "<C-y>"
+    end
+
+    return require("nvim-autopairs").autopairs_cr()
+  end, { expr = true, noremap = true })
+
+  vim.keymap.set("i", "<cr>", function()
+    if vim.fn.pumvisible() == 1 then
+      return "<C-y>"
+    end
+
+    return require("nvim-autopairs").autopairs_cr()
+  end, { expr = true, noremap = true })
+end
+
 M.comment = {
   opleader = {
     line = "gc",

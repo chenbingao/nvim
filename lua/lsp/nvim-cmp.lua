@@ -1,5 +1,6 @@
 local cmpOk, cmp = pcall(require, "cmp")
 local uiOk, ui = pcall(require, "lsp.ui")
+local ok, epo = pcall(require, "epo")
 
 if cmpOk and uiOk then
   cmp.setup {
@@ -46,4 +47,16 @@ if cmpOk and uiOk then
       { name = "cmdline" },
     }),
   })
+elseif ok then
+  epo.setup {
+    fuzzy = false,
+    debounce = 200,
+    signature = false,
+    snippet_path = nil,
+    signature_border = "single",
+    kind_format = function(k)
+      return k:lower():sub(1, 1)
+    end,
+  }
+  require("common.keybindings").epo()
 end

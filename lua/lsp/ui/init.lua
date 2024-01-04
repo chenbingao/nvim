@@ -23,6 +23,7 @@ if ok then
     ui = {
       border = "single",
     },
+    symbol_in_winbar = { enable = false },
     finder = {
       keys = {
         -- expand_or_jump = "<CR>",

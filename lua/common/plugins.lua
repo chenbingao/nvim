@@ -28,7 +28,7 @@ require("lazy").setup {
     "akinsho/bufferline.nvim",
     dependencies = { "kyazdani42/nvim-web-devicons" },
   },
-  {
+  --[[ {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
@@ -41,7 +41,7 @@ require("lazy").setup {
       -- "rafamadriz/friendly-snippets",
       "onsails/lspkind-nvim",
     },
-  },
+  }, ]]
   { "simrat39/rust-tools.nvim", event = "BufReadPre" },
   {
     "nvim-lualine/lualine.nvim",
@@ -80,6 +80,10 @@ require("lazy").setup {
     config = function()
       require("hlsearch").setup()
     end,
+  },
+  {
+    "nvimdev/epo.nvim",
+    event = "InsertEnter",
   },
   {
     "akinsho/flutter-tools.nvim",

@@ -19,9 +19,20 @@ M.flutterKeybinding = function(buf, keybindings)
   keybindings.map_flutter_tools(buf_set_map)
 end
 
-M.capabilities = require("cmp_nvim_lsp").default_capabilities {
-  snippetSupport = false,
-}
+local cmpOk, cmp = pcall(require, "cmp_nvim_lsp")
+local epoOk, epo = pcall(require, "epo")
+
+if epoOk then
+  M.capabilities = vim.tbl_deep_extend(
+    "force",
+    vim.lsp.protocol.make_client_capabilities(),
+    epo.register_cap()
+  )
+elseif cmpOk then
+  M.capabilities = cmp.default_capabilities {
+    snippetSupport = false,
+  }
+end
 
 M.flags = {
   debounce_text_changes = 150,
