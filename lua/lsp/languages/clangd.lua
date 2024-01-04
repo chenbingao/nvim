@@ -1,7 +1,6 @@
 local common = require "lsp.languages.common"
 
 local opts = {
-  capabilities = common.capabilities,
   flags = common.flags,
   handlers = common.handlers,
   on_attach = function(client, buf)
@@ -15,7 +14,11 @@ local opts = {
   end,
 }
 
-opts.capabilities.offsetEncoding = { "utf-16" }
+opts.capabilities = vim.tbl_deep_extend(
+  "force",
+  common.capabilities,
+  { offsetEncoding = "utf-16" }
+)
 
 return {
   on_setup = function(server)

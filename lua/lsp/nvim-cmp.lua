@@ -49,9 +49,9 @@ if cmpOk and uiOk then
   })
 elseif ok then
   epo.setup {
-    fuzzy = false,
-    debounce = 200,
-    signature = false,
+    fuzzy = true,
+    debounce = 350,
+    signature = true,
     snippet_path = nil,
     signature_border = "single",
     kind_format = function(k)

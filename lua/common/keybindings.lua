@@ -103,21 +103,23 @@ M.cmp = function(c)
 end
 
 M.epo = function()
+  local key = "<C-y>"
+  local cmd = vim.api.nvim_replace_termcodes(key, true, false, true)
   vim.keymap.set("i", "<TAB>", function()
     if vim.fn.pumvisible() == 1 then
-      return "<C-y>"
+      return cmd
     end
 
     return require("nvim-autopairs").autopairs_cr()
-  end, { expr = true, noremap = true })
+  end, { expr = true, noremap = true, replace_keycodes = false })
 
   vim.keymap.set("i", "<cr>", function()
     if vim.fn.pumvisible() == 1 then
-      return "<C-y>"
+      return cmd
     end
 
     return require("nvim-autopairs").autopairs_cr()
-  end, { expr = true, noremap = true })
+  end, { expr = true, noremap = true, replace_keycodes = false })
 end
 
 M.comment = {
