@@ -2,6 +2,13 @@ local common = require "lsp.languages.common"
 
 local opts = {
   flags = common.flags,
+  filetypes = {
+    "c",
+    "cc",
+    "cpp",
+    "objc",
+    "objcpp",
+  },
   handlers = common.handlers,
   on_attach = function(client, buf)
     common.disableFormat(client)
