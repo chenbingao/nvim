@@ -124,6 +124,11 @@ local localMapping = {
       "Show Lsp References",
     },
   },
+  l = {
+    name = "LSP Operation",
+    i = { ":LspInfo<CR>", "LSP Info" },
+    r = { ":LspRestart<CR>", "LSP Restart" },
+  },
 }
 
 wk.register(mapping, { prefix = "<leader>" })
