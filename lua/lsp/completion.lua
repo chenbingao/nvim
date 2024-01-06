@@ -50,13 +50,13 @@ if cmpOk and uiOk then
   })
 elseif ok then
   epo.setup {
-    fuzzy = true,
-    debounce = 350,
-    signature = true,
+    fuzzy = false,
+    debounce = 150,
+    signature = false,
     snippet_path = nil,
     signature_border = "single",
     kind_format = function(k)
-      return k:lower():sub(1, 1)
+      return ui.epo_formatting(k)
     end,
   }
   require("common.keybindings").epo()

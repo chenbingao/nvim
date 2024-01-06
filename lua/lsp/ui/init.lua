@@ -6,6 +6,8 @@ local M = {}
 local lspKindOk, lspkind = pcall(require, "lspkind")
 if lspKindOk then
   local ok, _ = pcall(require, "nvim-cmp")
+  local epoOk, _ = pcall(require, "epo")
+
   if ok then
     M.formatting = {
       format = lspkind.cmp_format {
@@ -17,6 +19,23 @@ if lspKindOk then
         end,
       },
     }
+  elseif epoOk then
+    M.epo_formatting = function(kind)
+      local function get_symbol()
+        local symbol = lspkind.symbol_map[kind]
+        local hasString = false
+        if symbol then
+          hasString = true
+        end
+        return hasString, symbol
+      end
+      local o, s = get_symbol()
+      if o then
+        return (s .. "  " .. kind)
+      else
+        return ""
+      end
+    end
   end
 end
 
