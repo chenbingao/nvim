@@ -87,6 +87,12 @@ M.map_flutter_tools = function(buf)
   buf("n", "<leader>ac", "<cmd>Telescope flutter commands<CR>", opt)
 end
 
+M.map_ts_util = function(buf)
+  buf("n", "<localleader>gs", "<cmd>TSLspOrganize<CR>", opt)
+  buf("n", "<localleader>gr", "<cmd>TSLspRenameFile<CR>", opt)
+  buf("n", "<localleader>gi", "<cmd>TSLspImportAll<CR>", opt)
+end
+
 M.cmp = function(c)
   return {
     ["<A-.>"] = c.mapping(c.mapping.complete(), { "i", "c" }),

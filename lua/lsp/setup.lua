@@ -11,6 +11,7 @@ local servers = {
   ocamllsp = require "lsp.languages.ocaml",
   hls = require "lsp.languages.haskell",
   dartls = require "lsp.languages.dartls",
+  tsserver = require "lsp.languages.ts",
 }
 
 for key, config in pairs(servers) do

@@ -7,6 +7,7 @@ require("conform").setup {
     cpp = { "clang_format" },
     dart = { "dart_format" },
     proto = { "buf" },
+    javascript = { { "prettierd", "prettier" } },
   },
   format_on_save = {
     timeout_ms = 500,
