@@ -90,6 +90,10 @@ local localMapping = {
   c = { "Change Background" },
   k = { "<cmd>bd<CR>", "Delete Buffer" },
   o = { "<cmd>Telescope find_files<CR>", "Open File" },
+  l = {
+    name = "Lsp",
+    r = { "<cmd>LspRestart<CR>", "Lsp Restart" },
+  },
   d = {
     name = "Diagnostic",
     d = { "Show Line Diagnostic By Vim API" },

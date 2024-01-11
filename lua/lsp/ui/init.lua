@@ -9,15 +9,6 @@ if lspKindOk then
   local ok, _ = pcall(require, "cmp")
   local epoOk, _ = pcall(require, "epo")
 
-  local function get_symbol(kind)
-    local symbol = lspkind.symbol_map[kind]
-    local hasString = false
-    if symbol then
-      hasString = true
-    end
-    return hasString, symbol
-  end
-
   if ok then
     M.formatting = {
       fields = { "kind", "abbr", "menu" },
@@ -29,17 +20,23 @@ if lspKindOk then
           local s = ({
             nvim_lsp = "lsp",
           })[source]
-          local text = vim_item.kind
-          text = text .. string.rep(" ", 10 - #text)
-          vim_item.menu = text
-            .. (s and { "[" .. s:upper():sub(1, 1) .. "]" } or {
-              "[" .. source:upper():sub(1, 1) .. "]",
-            })[1]
+          vim_item.menu = (s and { "[" .. s:upper():sub(1, 1) .. "]" } or {
+            "[" .. source:upper():sub(1, 1) .. "]",
+          })[1]
           return vim_item
         end,
       },
     }
   elseif epoOk then
+    local function get_symbol(kind)
+      local symbol = lspkind.symbol_map[kind]
+      local hasString = false
+      if symbol then
+        hasString = true
+      end
+      return hasString, symbol
+    end
+
     M.epo_formatting = function(kind)
       local o, s = get_symbol(kind)
       if o then
