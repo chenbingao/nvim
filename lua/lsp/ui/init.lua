@@ -29,9 +29,11 @@ if lspKindOk then
           local s = ({
             nvim_lsp = "lsp",
           })[source]
-          vim_item.menu = vim_item.kind
-            .. (s and { " [" .. s:upper():sub(1, 1) .. "]" } or {
-              " [" .. source:upper():sub(1, 1) .. "]",
+          local text = vim_item.kind
+          text = text .. string.rep(" ", 10 - #text)
+          vim_item.menu = text
+            .. (s and { "[" .. s:upper():sub(1, 1) .. "]" } or {
+              "[" .. source:upper():sub(1, 1) .. "]",
             })[1]
           return vim_item
         end,
