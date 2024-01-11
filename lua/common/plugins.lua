@@ -21,7 +21,10 @@ require("lazy").setup {
     "kyazdani42/nvim-tree.lua",
     dependencies = {
       "kyazdani42/nvim-web-devicons",
-      "stevearc/dressing.nvim",
+      {
+        "JMarkin/nvim-tree.lua-float-preview",
+        lazy = true,
+      },
     },
   },
   {
@@ -90,9 +93,9 @@ require("lazy").setup {
     lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "stevearc/dressing.nvim",
     },
   },
+  "stevearc/dressing.nvim",
   "folke/trouble.nvim",
   { "glepnir/oceanic-material", priority = 1000 },
   { "glepnir/nerdicons.nvim", cmd = "NerdIcons" },
