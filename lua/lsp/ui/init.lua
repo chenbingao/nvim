@@ -22,20 +22,17 @@ if lspKindOk then
     M.formatting = {
       fields = { "kind", "abbr", "menu" },
       format = lspkind.cmp_format {
-        mode = "text",
-        -- with_text = true,
+        mode = "symbol",
         maxwidth = 50,
-        presets = "codicons",
         before = function(entry, vim_item)
-          local kind = vim_item.kind
-          vim_item.menu = kind
-          local source = (
-            { nvim_lsp = "LSP", path = "Path", buffer = "Buffer" }
-          )[entry.source.name]
-          if source then
-            vim_item.menu = vim_item.menu .. " [" .. source .. "]"
-          end
-          vim_item.kind = lspkind.symbol_map[kind]
+          local source = entry.source.name
+          local s = ({
+            nvim_lsp = "lsp",
+          })[source]
+          vim_item.menu = vim_item.kind
+            .. (s and { " [" .. s:upper():sub(1, 1) .. "]" } or {
+              " [" .. source:upper():sub(1, 1) .. "]",
+            })[1]
           return vim_item
         end,
       },
