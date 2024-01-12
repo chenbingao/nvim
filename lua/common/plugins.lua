@@ -1,6 +1,6 @@
 require("lazy").setup {
   "folke/which-key.nvim",
-  -- "jose-elias-alvarez/nvim-lsp-ts-utils",
+  "jose-elias-alvarez/nvim-lsp-ts-utils",
   "ahmedkhalf/project.nvim",
   "mfussenegger/nvim-dap",
   "theHamsta/nvim-dap-virtual-text",
@@ -21,10 +21,6 @@ require("lazy").setup {
     "kyazdani42/nvim-tree.lua",
     dependencies = {
       "kyazdani42/nvim-web-devicons",
-      {
-        "JMarkin/nvim-tree.lua-float-preview",
-        lazy = true,
-      },
     },
   },
   {

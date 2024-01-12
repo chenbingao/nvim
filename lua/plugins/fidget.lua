@@ -45,7 +45,7 @@ if ok then
       filter = vim.log.levels.INFO,
       window = {
         align = "top",
-        border = "single",
+        border = "none",
         normal_hl = "Comment",
         winblend = 0,
       },
