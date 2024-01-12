@@ -1,7 +1,9 @@
 local ok, nvim_tree = pcall(require, "nvim-tree")
+local previewOk, preview = pcall(require, "float-preview")
 
 local function on_attach(bufnr)
   local api = require "nvim-tree.api"
+  preview.attach_nvimtree(bufnr)
 
   local function opts(desc)
     return {
@@ -144,7 +146,7 @@ local function on_attach(bufnr)
   )
 end
 
-if ok then
+if ok and previewOk then
   nvim_tree.setup {
     git = {
       enable = true,
@@ -161,37 +163,35 @@ if ok then
     },
     on_attach = on_attach,
   }
-
-  -- local HEIGHT_RATIO = 0.8
-  -- local WIDTH_RATIO = 0.5
-
-  -- nvim_tree.setup {
-  --   view = {
-  --     float = {
-  --       enable = true,
-  --       open_win_config = function()
-  --         local screen_w = vim.opt.columns:get()
-  --         local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
-  --         local window_w = screen_w * WIDTH_RATIO
-  --         local window_h = screen_h * HEIGHT_RATIO
-  --         local window_w_int = math.floor(window_w)
-  --         local window_h_int = math.floor(window_h)
-  --         local center_x = (screen_w - window_w) / 2
-  --         local center_y = ((vim.opt.lines:get() - window_h) / 2)
-  --           - vim.opt.cmdheight:get()
-  --         return {
-  --           border = "double",
-  --           relative = "editor",
-  --           row = center_y,
-  --           col = center_x,
-  --           width = window_w_int,
-  --           height = window_h_int,
-  --         }
-  --       end,
-  --     },
-  --     width = function()
-  --       return math.floor(vim.opt.columns:get() * WIDTH_RATIO)
-  --     end,
-  --   },
-  -- }
+  preview.setup {
+    wrap_nvimtree_commands = true,
+    scroll_lines = 20,
+    window = {
+      style = "minimal",
+      relative = "win",
+      border = "single",
+      wrap = false,
+    },
+    mapping = {
+      -- scroll down float buffer
+      down = { "<C-d>" },
+      -- scroll up float buffer
+      up = { "<C-e>", "<C-u>" },
+      -- enable/disable float windows
+      toggle = { "<C-x>" },
+    },
+    hooks = {
+      pre_open = function(path)
+        local size = require("float-preview.utils").get_size(path)
+        if type(size) ~= "number" then
+          return false
+        end
+        local is_text = require("float-preview.utils").is_text(path)
+        return size < 5 and is_text
+      end,
+      post_open = function(_)
+        return true
+      end,
+    },
+  }
 end
