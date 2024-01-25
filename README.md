@@ -9,7 +9,5 @@ return {
   colorscheme = "everforest",
   background = "light",
   python3_host_prog = "/usr/bin/python3",
-  font = "LXGWWenKaiMono Nerd Font",
-  font_size = 18,
 }
 ```
