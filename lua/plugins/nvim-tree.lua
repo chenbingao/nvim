@@ -156,9 +156,15 @@ if ok then
       update_cwd = true,
     },
     view = {
+      width = 50,
       -- side = "right",
       side = "left",
     },
     on_attach = on_attach,
+    actions = {
+      open_file = {
+        quit_on_open = true,
+      },
+    },
   }
 end
