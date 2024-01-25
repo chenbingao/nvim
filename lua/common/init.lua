@@ -1,5 +1,5 @@
-require('common.basic')
-require('common.plugins')
-require('common.colorscheme')
-require('common.keybindings')
-require('common.autocmd')
+require "common.basic"
+require "common.plugins"
+require "common.colorscheme"
+require "common.keybindings"
+require "common.autocmd"
