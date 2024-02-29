@@ -91,8 +91,9 @@ local localMapping = {
   k = { "<cmd>bd<CR>", "Delete Buffer" },
   o = { "<cmd>Telescope find_files<CR>", "Open File" },
   l = {
-    name = "Lsp",
-    r = { "<cmd>LspRestart<CR>", "Lsp Restart" },
+    name = "LSP Operation",
+    i = { ":LspInfo<CR>", "LSP Info" },
+    r = { ":LspRestart<CR>", "LSP Restart" },
   },
   d = {
     name = "Diagnostic",
@@ -127,11 +128,6 @@ local localMapping = {
       "<cmd>TroubleToggle lsp_references<CR>",
       "Show Lsp References",
     },
-  },
-  l = {
-    name = "LSP Operation",
-    i = { ":LspInfo<CR>", "LSP Info" },
-    r = { ":LspRestart<CR>", "LSP Restart" },
   },
 }
 
