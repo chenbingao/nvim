@@ -16,6 +16,7 @@ local opts = {
   on_attach = function(client, buf)
     common.disableFormat(client)
     common.keybinding(buf)
+    vim.lsp.inlay_hint.enable(buf, true)
     keybinding(buf)
   end,
   settings = {
@@ -38,7 +39,12 @@ local opts = {
       diagnostics = {
         disabled = { "unresolved-proc-macro" },
       },
-      inlayHints = { locationLinks = false },
+      inlayHints = {
+        lifetimeElisionHints = {
+          enable = true,
+          useParameterNames = true,
+        },
+      },
     },
   },
 }
