@@ -37,7 +37,7 @@ local opts = {
         command = "clippy",
       },
       diagnostics = {
-        disabled = { "unresolved-proc-macro" },
+        disabled = { "unresolved-proc-macro", "needless_return" },
       },
       inlayHints = {
         lifetimeElisionHints = {

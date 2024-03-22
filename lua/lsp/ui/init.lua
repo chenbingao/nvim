@@ -54,7 +54,6 @@ if ok then
     ui = {
       border = "single",
     },
-    symbol_in_winbar = { enable = false },
     diagnostic = { border_follow = false },
     finder = {
       keys = {
