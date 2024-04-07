@@ -6,6 +6,7 @@ require("conform").setup {
     c = { "clang_format" },
     cpp = { "clang_format" },
     dart = { "dart_format" },
+    haskell = { "fourmolu" },
     proto = { "buf" },
     javascript = { { "prettierd", "prettier" } },
   },
