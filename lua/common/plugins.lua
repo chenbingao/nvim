@@ -110,5 +110,6 @@ require("lazy").setup {
   { "limitLiu/everforest-nvim", lazy = false, priority = 1000 },
   "limitLiu/zephyr-nvim",
   "RRethy/vim-illuminate",
+  { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
   -- theme end
 }
